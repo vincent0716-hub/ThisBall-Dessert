@@ -3,6 +3,7 @@ import logo2 from "../assets/thisballLogo.png";
 import logo from "../assets/thisballLogo_preview_rev_1.png";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Router, Routes, Route, Link } from "react-router-dom";
+import NavItem from "./NavLink";
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const changeBackground = () => {
@@ -41,14 +42,14 @@ const Header = () => {
           {" "}
           <h1>About</h1>
         </Link>
-        <Link to="/Loved">
+        <NavItem to="/Loved" disabled>
           {" "}
           <h1>Loved</h1>
-        </Link>
-        <Link to="/Food">
+        </NavItem>
+        <NavItem to="/Food" disabled>
           {" "}
           <h1>Food</h1>
-        </Link>
+        </NavItem>
 
         <AiOutlineShoppingCart className="h-6 w-6"></AiOutlineShoppingCart>
       </div>

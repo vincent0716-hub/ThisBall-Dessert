@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import about1 from "../assets/aboutimage1.png";
 import about2 from "../assets/aboutimage2.png";
 import about3 from "../assets/aboutimage3.png";
 import about4 from "../assets/aboutimage4.png";
 import about5 from "../assets/aboutimage5.png";
 import Footer from "../components/Footer";
+import { Router, Routes, Route, Link } from "react-router-dom";
+import AboutBoard from "./AboutBoard";
+import { BrowserRouter } from "react-router-dom";
 const About = () => {
+  const [title, settTitle] = useState();
+  const clickedState = (a) => {
+    console.log("進來的點擊標題是55:", a);
+  };
   const searchSource = [
     {
       header: about1,
@@ -41,12 +48,14 @@ const About = () => {
   ];
   return (
     <div className="w-screen h-screen">
-      <div className="w-screen flex justify-center items-center text-[36px] p-16">
-        About Us
-      </div>
-      <div className="h-[2px] w-full bg-gray-100 my-6"></div>
-      {/**section */}
-      {/**  <div className="  h-[75%] bg-[] w-screen flex flex-col justify-center items-center">
+      <div className="w-screen h-screen">
+        {" "}
+        <div className="w-screen flex justify-center items-center text-[36px] p-16">
+          About Us
+        </div>
+        <div className="h-[2px] w-full bg-gray-100 my-6"></div>
+        {/**section */}
+        {/**  <div className="  h-[75%] bg-[] w-screen flex flex-col justify-center items-center">
         <div className="bg-gray-100 h-[58%] w-[60%] shadow-2xl flex">
           <div className="h-full w-[35%] bg-[]">
             {" "}
@@ -75,44 +84,50 @@ const About = () => {
         </div>{" "}
         <div className="h-[2px] w-[60%] bg-gray-100 my-16"></div>
       </div>*/}
-
-      {/**end of section */}
-      {searchSource.map((searchSource, index) => (
-        <div
-          className="  h-[75%] bg-[] w-screen flex flex-col justify-center items-center"
-          data-aos="fade-right"
-          data-aos-duration="1500"
-          data-aos-offset="250"
-        >
-          <div className="bg-gray-100 h-[58%] w-[60%] shadow-2xl flex">
-            <div className="h-full w-[35%] bg-[]">
-              {" "}
-              <img
-                src={searchSource.header}
-                className="w-full h-full object-center object-cover"
-              ></img>
-            </div>
-            <div className="h-full w-[65%] bg-[]">
-              <div className="w-full h-full px-8 py-8  relative">
-                <h1 className="text-[24px] font-semibold my-2">
-                  {searchSource.title1}
-                </h1>
-                <h1 className="text-[16px] font-normal  my-5">
-                  {searchSource.title2}
-                </h1>
-                <h1 className="text-[16px] font-normal  absolute bottom-6 left-8">
-                  {searchSource.date}
-                </h1>
-                <button className="bg-gray-200 p-2 absolute bottom-6 right-12">
-                  See More
-                </button>
+        {/**end of section */}
+        {searchSource.map((searchSource, index) => (
+          <div
+            className="  h-[75%] bg-[] w-screen flex flex-col justify-center items-center"
+            data-aos="fade-right"
+            data-aos-duration="1500"
+            data-aos-offset="250"
+          >
+            <div className="bg-gray-100 h-[58%] w-[60%] shadow-2xl flex">
+              <div className="h-full w-[35%] bg-[]">
+                {" "}
+                <img
+                  src={searchSource.header}
+                  className="w-full h-full object-center object-cover"
+                ></img>
               </div>
-            </div>
-          </div>{" "}
-          <div className="h-[2px] w-[60%] bg-gray-100 my-16"></div>
-        </div>
-      ))}
-      <Footer />
+              <div className="h-full w-[65%] bg-[]">
+                <div className="w-full h-full px-8 py-8 bg-[]  relative">
+                  <h1 className="text-[24px] font-semibold my-2">
+                    {searchSource.title1}
+                  </h1>
+                  <h1 className="text-[16px] font-normal  my-5">
+                    {searchSource.title2}
+                  </h1>
+                  <h1 className="text-[16px] font-normal  absolute bottom-6 left-8">
+                    {searchSource.date}
+                  </h1>
+                  {/**  onClick={clickedState(searchSource.title1)} to={`/About/AboutBoard/${searchSource.title1}`}*/}
+                  <Link to="AboutBoard">
+                    <button
+                      className="bg-gray-200 p-2 absolute bottom-6 right-12"
+                      onClick={() => clickedState(searchSource.title1)}
+                    >
+                      See More{" "}
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>{" "}
+            <div className="h-[2px] w-[60%] bg-gray-100 my-16"></div>
+          </div>
+        ))}
+        <Footer />
+      </div>
     </div>
   );
 };

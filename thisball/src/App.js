@@ -13,6 +13,7 @@ import shop2 from "./assets/shop2.jpg";
 import shop3 from "./assets/shop3.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import AboutBoard from "./page/AboutBoard";
 function App() {
   useEffect(() => {
     AOS.init();
@@ -92,6 +93,8 @@ function App() {
         <Route path="/About" element={<About></About>} />
         <Route path="/Food" element={<Food></Food>} />
         <Route path="/Loved" element={<Loved foodID={"test1234"}></Loved>} />
+        {/**不管是哪裡分支底下的頁面 子頁面route依序要寫在app檔案底下 在其他子檔案navigate去其他子檔案時 才能找得到這個route */}
+        <Route path="/About/AboutBoard" element={<AboutBoard />} />
       </Routes>
     </div>
   );
